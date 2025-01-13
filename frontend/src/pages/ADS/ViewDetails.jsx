@@ -222,16 +222,48 @@ const ViewDetails = () => {
             </div>
           </div>
         </div>
-        <div className="w-[400px] border h-[700px]">
-          <div className="flex bg-red-500 items-center gap-4">
-            <Percent className="text-red-500 size-4 rounded-full bg-white" />
-            <p className="text-white">
+        <div className="w-[400px] border h-[800px] rounded-md sticky top-8 overflow-hidden">
+          <div className="flex bg-red-500 items-center gap-4 py-3 px-1 ">
+            <p className="text-white flex justify-center items-center gap-2 w-4/5">
+              <Percent className="text-red-500 size-4 rounded-full bg-white" />
               Login now to get upto 15% lower prices{" "}
             </p>
-            <div className="flex"></div>
-            <p>LOGIN</p>
+
+            <p className=" px-1 border text-white  rounded-sm">LOGIN</p>
           </div>
-          <div className="border w-fit"></div>
+          <div className="p-8">
+            <div className="bg-red-500 w-full font-bold text-lg  py-2 ">
+              <p>Wizard Blue membership charge+₹67</p>
+              <p>
+                Get additional benefits upto <span>₹1000</span>
+              </p>
+              <p> ₹199 </p>
+            </div>
+            <div className="w-full ">
+              <div className="flex juctify-between w-full">
+                <p>Your savings</p>
+                <p>₹2189</p>
+              </div>
+              <div className="flex juctify-between w-full">
+                <p>Your savings</p>
+                <p>₹2189</p>
+              </div>
+              <p>Including taxes & fees</p>
+            </div>
+            <button className="bg-red-500 w-full font-bold text-lg  py-2 ">
+              Continue to booking{" "}
+            </button>
+            <div>
+              {" "}
+              <p>12 people booked this hotel in last 6 hours</p>
+              <p>Cancellation Policy</p>
+              <p>Follow safety measures advised at the hotel</p>
+              <p>
+                {" "}
+                By proceeding, you agree to our <span>Guest Policies.</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
