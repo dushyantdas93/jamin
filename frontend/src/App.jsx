@@ -17,17 +17,30 @@ const App = () => {
       path: "/",
       element: <Home />,
     },
+    ,
+    {
+      path: "/ads",
+      element: <Ads />,
+    },
+    {
+      path: "/view-detail",
+      element: <ViewDetails />,
+    },
     {
       path: "/",
       element: <ProtectedRoute />,
       children: [
+        {
+          path: "/exp",
+          element: <Experiment />,
+        },
         {
           path: "/ads",
           element: <Ads />,
         },
         {
           path: "/view-detail",
-          element: <ViewDetails />,   
+          element: <ViewDetails />,
         },
       ],
     },

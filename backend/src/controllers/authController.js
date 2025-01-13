@@ -146,24 +146,49 @@ export const agentLogin = async (req, res) => {
         _id: isPresent._id,
       });
 
-      console.log(accessToken);
+
 
       const token = await encryptToken(accessToken, process.env.SECRET_KEY);
 
       isPresent.token = refreshToken;
 
       await isPresent.save();
+
       const agent = await Agent.findById(isPresent._id).select(
-        "-password -token"
+        "-password "
       );
-      return res
-        .status(200)
-        .cookie("agentToken", token, { httpOnly: true, secure: true })
-        .json({
-          message: "logged in successfully",
-          token,
-          agent,
+
+      if (agent.token || accessToken) {
+        const accessToken = await generateAccessToken({
+          email: isPresent.email,
+          _id: isPresent._id,
         });
+
+        const token = await encryptToken(accessToken, process.env.SECRET_KEY);
+
+        return res
+          .status(200)
+          .cookie("agentToken", token, { httpOnly: true, secure: true })
+          .json({
+            token,
+            agent,
+          });
+      } else {
+        
+   return res
+     .status(200)
+     .cookie("agentToken", token, { httpOnly: true, secure: true })
+     .json({
+       message: "logged in successfully",
+       token,
+       agent,
+     });
+      }
+      
+      
+
+   
+      
     } else {
       return res.status(400).json({ message: "invalid credential" });
     }

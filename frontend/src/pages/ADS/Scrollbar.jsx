@@ -422,7 +422,7 @@ const Scrollbar = () => {
                       </div>
                       {!view ? (
                         <div className="flex gap-4 items-center ">
-                          <Link to="/View-detail">
+                          <Link to="/view-detail">
                             <p className="text-black font-bold border border-black px-5 py-2 ">
                               View Details
                             </p>
