@@ -8,7 +8,9 @@ import {
   AirVent,
   BatteryCharging,
   CarTaxiFront,
+  Check,
   Heart,
+  Heater,
   Hotel,
   MonitorStop,
   Star,
@@ -24,8 +26,8 @@ const ViewDetails = () => {
           <img src={item} alt="bedroom" />
         ))}
       </div>
-      <div className="flex w-full justify-around py-8">
-        <div className="w-[800px]  flex flex-col gap-2">
+      <div className="flex w-full justify-center gap-16 py-8">
+        <div className="w-[700px]  flex flex-col gap-2">
           <div className="flex justify-between ">
             <div className="flex flex-col gap-2 ">
               <p className="text-4xl  font-bold ">
@@ -68,38 +70,76 @@ const ViewDetails = () => {
           <div className="flex  pb-6">
             <h1 className="font-bold text-2xl">Amenities</h1>
           </div>
-          <div className="flex gap-5  ">
-            <div className="flex flex-col gap-48">
-              <div className="flex gap-2 ">
-                <AirVent />
-                <p>AC</p>
+          <div className="flex flex-col gap-4">
+            <div className="flex gap-28 ">
+              <div className="flex flex-col gap-5">
+                <div className="flex  gap-2 ">
+                  <AirVent />
+                  <p className="">AC</p>
+                </div>
+                <div className="flex gap-2">
+                  <BatteryCharging />
+                  <p>power backup</p>
+                </div>
               </div>
-              <div className="flex gap-2">
-                <BatteryCharging />
-                <p>power backup</p>
+              <div className="flex flex-col gap-5">
+                <div className="flex  gap-2">
+                  <MonitorStop />
+                  <p>TV</p>
+                </div>
+                <div className="flex gap-2">
+                  <Heater />
+                  <p>Heater</p>
+                </div>
               </div>
-              <div className="flex gap-2">
-                <Wifi />
-                <p>Free Wifi</p>
-              </div>
-              <div className="flex gap-2">
-                <MonitorStop />
-                <p>TV</p>
+              <div className="flex flex-col gap-5">
+                <div className="flex gap-2">
+                  <Wifi />
+                  <p>Free Wifi</p>
+                </div>
+                <div className="flex gap-2">
+                  <CarTaxiFront />
+                  <p>Parking facility</p>
+                </div>
               </div>
             </div>
-            <div className="flex gap-28">
-              <div className="flex gap-2">
-                <Hotel />
-                <p>Geyser</p>
-              </div>
-              <div className="flex gap-2">
-                <CarTaxiFront />
-                <p>Parking facility</p>
+            <div>
+              <p className="text-[#F02E24] font-semibold">Show More</p>
+            </div>
+          </div>
+          <div className="flex flex-col ">
+            <p className="text-2xl font-bold py-4">About this OYO</p>
+            <p className="">Affordable hotel at prime location.</p>
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold pt-4 pb-3">Choose your room</h1>
+            <div className="bg-[#9295AE] rounded-t-md">
+              <p className="pl-4 text-white font-semibold">Selected Category</p>
+            </div>
+            <div className="h-[200px] border rounded-md">
+              <div className="flex flex-col pl-6 pt-3 gap-2">
+                <div className="flex gap-4 items-center">
+                  <p className="text-xl font-semibold">Classic</p>
+                  <div className="bg-green-400 rounded-full size-6 ">
+                    <Check className="text-white" />
+                  </div>
+                </div>
+                <p>Room size: 9 sqm</p>
+                <div className="flex  gap-6 pt-8">
+                  <div className="flex  gap-2">
+                    <AirVent />
+                    <p>AC</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <MonitorStop />
+                    <p>TV</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="">
+        <div className="w-[400px] bg-slate-600 border h-50vh">
           <p></p>
         </div>
       </div>
