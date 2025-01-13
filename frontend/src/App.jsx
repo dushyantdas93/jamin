@@ -4,12 +4,12 @@ import Home from "./pages/HOME/Home.jsx";
 import NotFound from "./pages/components/NotFound.jsx";
 import Ads from "./pages/ADS/Ads.jsx";
 import "./App.css";
-import Experiment from "./pages/Experiment/Experiment.jsx";
 import ViewDetails from "./pages/ADS/ViewDetails.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Register from "./pages/Register/Register.jsx";
 import ProtectedRoute from "./Routes/ProtectedRoute.jsx";
 import PublicRoute from "./Routes/PublicRoute.jsx";
+import { Slide } from "react-toastify";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -22,16 +22,12 @@ const App = () => {
       element: <ProtectedRoute />,
       children: [
         {
-          path: "/exp",
-          element: <Experiment />,
-        },
-        {
           path: "/ads",
           element: <Ads />,
         },
         {
           path: "/view-detail",
-          element: <ViewDetails />,
+          element: <ViewDetails />,   
         },
       ],
     },
