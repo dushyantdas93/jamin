@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { customer_login, customer_logout } from "../../rtk/slices/authSlice.js";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import home from "/image/home.jpg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import logo from "/image/oyo-logo1.png";
+import { toast } from "react-toastify";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -61,7 +62,11 @@ const Login = () => {
             validationSchema={validationSchema}
             onSubmit={(values) => {
               // console.log("Form Data:", values);
-              dispatch(customer_login(values)).then(() => navigate("/ads"));
+              const res = dispatch(customer_login(values)).then(() =>
+                navigate("/ads")
+              );
+
+              console.log("rerer", res.error);
 
               // console.log(userInfo)
             }}

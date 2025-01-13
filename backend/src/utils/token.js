@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 
 export const verifyToken = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
+
   if (!token) return res.status(401).json({ message: "Token missing" });
 
   try {
@@ -13,17 +14,24 @@ export const verifyToken = (req, res, next) => {
   }
 };
 
-
 // Generate Access Token
 export const generateAccessToken = (user) => {
-  return jwt.sign({ id: user._id,email: user.email }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "30m", // Short-lived access token
-  });
+  return jwt.sign(
+    { id: user._id, email: user.email },
+    process.env.ACCESS_TOKEN_SECRET,
+    {
+      expiresIn: "1m", // Short-lived access token
+    }
+  );
 };
 
 // Generate Refresh Token
 export const generateRefreshToken = (user) => {
-  return jwt.sign({ id: user._id,email: user.email }, process.env.REFRESH_TOKEN_SECRET, {
-    expiresIn: "7d", // Long-lived refresh token
-  });
+  return jwt.sign(
+    { id: user._id, email: user.email },
+    process.env.REFRESH_TOKEN_SECRET,
+    {
+      expiresIn: "7d", // Long-lived refresh token
+    }
+  );
 };
