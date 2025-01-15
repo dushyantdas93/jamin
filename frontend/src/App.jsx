@@ -30,7 +30,10 @@ const App = () => {
       path: "/",
       element: <ProtectedRoute />,
       children: [
+<<<<<<< HEAD
        
+=======
+>>>>>>> 06b429b2550b9500f6d821e46df7d3e3be915391
         {
           path: "/ads",
           element: <Ads />,
