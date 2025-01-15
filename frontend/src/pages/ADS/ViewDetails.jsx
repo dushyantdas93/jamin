@@ -12,16 +12,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination, Mousewheel, Keyboard, FreeMode } from "swiper/modules";
+import { Mousewheel, Keyboard, FreeMode } from "swiper/modules";
 import {
   AirVent,
   BatteryCharging,
   CarTaxiFront,
   Check,
+  DoorClosed,
   Heart,
   Heater,
   Hotel,
+  Images,
   MonitorStop,
+  Pencil,
   Percent,
   Star,
   Wifi,
@@ -29,22 +32,19 @@ import {
 import "swiper/css";
 const ViewDetails = () => {
   const images = [bedroom, bedroom2, bedroom3, bedroom4, bedroom5];
+  
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col ">
       <Navbar />
-      <div className="flex h-[450px] overflow-y-scroll">
+      <div className="flex h-[450px] overflow-y-scroll relative ">
         <Swiper
           cssMode={true}
-          navigation={true}
           mousewheel={true}
           keyboard={true}
           slidesPerView={3}
           spaceBetween={30}
           freeMode={true}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Navigation, Pagination, Mousewheel, Keyboard, FreeMode]}
+          modules={[Mousewheel, Keyboard, FreeMode]}
           className="mySwiper"
         >
           {images.map((item, idx) => (
@@ -53,9 +53,15 @@ const ViewDetails = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="flex cursor-pointer absolute p-2 bottom-6 bg-white px-2 py-1 gap-2 rounded-sm border-black border right-6 z-10">
+          <Images />
+          <p className="text-sm font-semibold text-[#3F3F3F]">
+            View all photos
+          </p>
+        </div>
       </div>
       <div className="flex w-full justify-center gap-16 py-8">
-        <div className="w-[700px]  flex flex-col gap-2">
+        <div className="w-[700px]  flex flex-col gap-2 ">
           <div className="flex justify-between ">
             <div className="flex flex-col gap-2 ">
               <p className="text-4xl  font-bold ">
@@ -202,11 +208,11 @@ const ViewDetails = () => {
             <div className="border h-[130px]">
               <div className="flex ">
                 <div className="flex w-[300px] flex-col items-center py-6 border-r">
-                  <div className="flex items-center gap-1 w-fit px-2 py-1 rounded-md bg-[#58AC00]">
+                  <div className="flex items-center gap-1 w-fit px-2 py-1 rounded-md  bg-[#58AC00]">
                     <p className="text-white text-2xl font-semibold">4.3</p>
                     <Star className="size-3 text-white " />
                   </div>
-                  <div className="flex flex-col items-center">
+                  <div className="flex  flex-col items-center">
                     <p className="text-black font-medium">Very Good</p>
                     <p className="text-xs">879 ratings</p>
                   </div>
@@ -222,16 +228,64 @@ const ViewDetails = () => {
             </div>
           </div>
         </div>
-        <div className="w-[400px] border h-[700px]">
-          <div className="flex bg-red-500 items-center gap-4">
-            <Percent className="text-red-500 size-4 rounded-full bg-white" />
-            <p className="text-white">
+        <div className="w-[400px] border h-[700px] rounded-md  ">
+          <div className="flex bg-red-500 items-center py-2 gap-3 px-4 justify-center rounded-t-md uppercase">
+            <Percent className="text-red-500 size-5 rounded-full bg-white" />
+            <p className="text-white text-xs font-bold">
               Login now to get upto 15% lower prices{" "}
             </p>
-            <div className="flex"></div>
-            <p>LOGIN</p>
+            <div className="flex border rounded-sm  bg-[#F58775] text-xs px-2 p-1">
+              <p className="text-white font-bold">LOGIN</p>
+            </div>
           </div>
-          <div className="border w-fit"></div>
+          <div className="py-6 px-4 ">
+            <div className="flex items-center gap-2">
+              <p className="text-2xl font-bold">₹1101</p>
+              <p className="text-[#6C787C] ">₹4797</p>
+              <p className="text-[#F7B446] font-semibold text-sm">77% off</p>
+            </div>
+            <div>
+              <p className="text-[#6C787C] text-xs">+ taxes & fees: ₹242</p>
+            </div>
+            <div className="py-4">
+              <div className="flex border h-[50px] gap-4 font-semibold shadow-sm rounded-sm   items-center justify-center ">
+                <div className="">
+                  <p className="">Tue, 14 Jan - Wed, 15 Jan</p>
+                </div>
+                <div className="border-l pl-4">
+                  <p>1 Room, 1 Guest</p>
+                </div>
+              </div>
+              <div className="py-5">
+                <div className="border  h-[50px] px-4 shadow-sm font-medium flex items-center justify-between rounded-sm">
+                  <div className="gap-2 flex ">
+                    <DoorClosed />
+                    <p>Classic</p>
+                  </div>
+                  <div className="f">
+                    <Pencil className="size-4 text-red-500" />
+                  </div>
+                </div>
+              </div>
+              <div className="py-3 flex flex-col">
+                <div className="flex gap-2 items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Percent className="rounded-full bg-[#F5A623] text-white size-4 " />
+                    <p>WELCOME80 coupon applied</p>
+                  </div>
+                  <div className="flex gap-3 items-center">
+                    <p className=" font-semibold text-black">-₹1640</p>
+                    <Check className="rounded-sm size-4 bg-green-400 text-white" />
+                  </div>
+                </div>
+                <div className="pl-6 ">
+                  <div className="border w-fit bg-[#EFFCF5] text-[#698E7F] text-sm px-2">
+                    <p>MORE OFFERS</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

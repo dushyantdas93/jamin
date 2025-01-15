@@ -30,10 +30,7 @@ const App = () => {
       path: "/",
       element: <ProtectedRoute />,
       children: [
-        {
-          path: "/exp",
-          element: <Experiment />,
-        },
+       
         {
           path: "/ads",
           element: <Ads />,
