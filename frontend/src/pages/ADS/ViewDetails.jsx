@@ -328,6 +328,7 @@ const ViewDetails = () => {
                     <DoorClosed />
                     <p>Classic</p>
                   </div>
+                  npm 
                   <div className="f">
                     <Pencil className="size-4 text-red-500" />
                   </div>
