@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import bedroom from "/image/bedroom.jpg";
 import bedroom2 from "/image/bedroom2.jpg";
@@ -17,7 +17,10 @@ import {
   AirVent,
   BatteryCharging,
   CarTaxiFront,
+  Cctv,
   Check,
+  CircleCheck,
+  CreditCard,
   DoorClosed,
   Heart,
   Heater,
@@ -26,13 +29,86 @@ import {
   MonitorStop,
   Pencil,
   Percent,
+  QrCode,
+  ShieldAlert,
   Star,
   Wifi,
 } from "lucide-react";
 import "swiper/css";
 const ViewDetails = () => {
   const images = [bedroom, bedroom2, bedroom3, bedroom4, bedroom5];
-  
+
+  const IconsData = [
+    {
+      img: <AirVent />,
+      title: "Ac",
+    },
+
+    {
+      img: <BatteryCharging />,
+      title: "Power Backup",
+    },
+
+    {
+      img: <MonitorStop />,
+      title: "TV",
+    },
+
+    {
+      img: <Heater />,
+      title: "Room Heater",
+    },
+
+    {
+      img: <Wifi />,
+      title: "Wifi",
+    },
+
+    {
+      img: <CarTaxiFront />,
+      title: "Car parking",
+    },
+
+    {
+      img: <CreditCard />,
+      title: "Card payment",
+    },
+    {
+      img: <QrCode />,
+      title: "QR Code",
+    },
+    {
+      img: <Cctv />,
+      title: "CCTV camera",
+    },
+
+    {
+      img: <CircleCheck />,
+      title: "Reception",
+    },
+    {
+      img: <CircleCheck />,
+      title: "24/7 check-in",
+    },
+    {
+      img: <CircleCheck />,
+      title: "Daily housekeeping",
+    },
+    {
+      img: <CircleCheck />,
+      title: "Fire extinguisher",
+    },
+    {
+      img: <CircleCheck />,
+      title: "Buzzer/door bell",
+    },
+    {
+      img: <CircleCheck />,
+      title: "Attached bathroom",
+    },
+  ];
+
+  const [viewMore, setViewMore] = useState(false);
   return (
     <div className="w-full flex flex-col ">
       <Navbar />
@@ -104,42 +180,32 @@ const ViewDetails = () => {
           <div className="flex  pb-6">
             <h1 className="font-bold text-2xl">Amenities</h1>
           </div>
-          <div className="flex flex-col gap-4">
-            <div className="flex gap-28 ">
-              <div className="flex flex-col gap-5">
-                <div className="flex  gap-2 ">
-                  <AirVent />
-                  <p className="">AC</p>
-                </div>
-                <div className="flex gap-2">
-                  <BatteryCharging />
-                  <p>power backup</p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-5">
-                <div className="flex  gap-2">
-                  <MonitorStop />
-                  <p>TV</p>
-                </div>
-                <div className="flex gap-2">
-                  <Heater />
-                  <p>Heater</p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-5">
-                <div className="flex gap-2">
-                  <Wifi />
-                  <p>Free Wifi</p>
-                </div>
-                <div className="flex gap-2">
-                  <CarTaxiFront />
-                  <p>Parking facility</p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <p className="text-[#F02E24] font-semibold">Show More</p>
-            </div>
+          <div className="flex flex-wrap items-center justify-center ">
+            {IconsData.map(
+              (item, idx) =>
+                (viewMore ? true : idx < 6) && (
+                  <div className="w-1/3 flex py-4  gap-2">
+                    {item.img} {item.title}
+                  </div>
+                )
+            )}
+          </div>
+          <div>
+            {viewMore ? (
+              <p
+                className="text-[#EE2E24] font-semibold cursor-pointer"
+                onClick={() => setViewMore(false)}
+              >
+                Show Less
+              </p>
+            ) : (
+              <p
+                className="text-[#EE2E24] font-semibold cursor-pointer"
+                onClick={() => setViewMore(true)}
+              >
+                Show More
+              </p>
+            )}
           </div>
           <div className="flex flex-col ">
             <p className="text-2xl font-bold py-4">About this OYO</p>
@@ -228,7 +294,7 @@ const ViewDetails = () => {
             </div>
           </div>
         </div>
-        <div className="w-[400px] border h-[700px] rounded-md  ">
+        <div className="w-[400px] border h-[700px] rounded-md shadow-md  ">
           <div className="flex bg-red-500 items-center py-2 gap-3 px-4 justify-center rounded-t-md uppercase">
             <Percent className="text-red-500 size-5 rounded-full bg-white" />
             <p className="text-white text-xs font-bold">
@@ -267,7 +333,7 @@ const ViewDetails = () => {
                   </div>
                 </div>
               </div>
-              <div className="py-3 flex flex-col">
+              <div className="py-3 flex flex-col border-b pb-6">
                 <div className="flex gap-2 items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Percent className="rounded-full bg-[#F5A623] text-white size-4 " />
@@ -278,9 +344,52 @@ const ViewDetails = () => {
                     <Check className="rounded-sm size-4 bg-green-400 text-white" />
                   </div>
                 </div>
-                <div className="pl-6 ">
-                  <div className="border w-fit bg-[#EFFCF5] text-[#698E7F] text-sm px-2">
+                <div className="pl-6 pt-1">
+                  <div className="border border-[#8EE0B6] w-fit rounded-sm font-semibold bg-[#EFFCF5] text-[#698e7f] text-xs  px-2 py-1">
                     <p>MORE OFFERS</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col gap-4 py-4">
+                <div className="flex justify-between items-center">
+                  <p>Your savings</p>
+                  <p className="text-base font-semibold ">₹1785</p>
+                </div>
+                <div className=" flex flex-col gap-1  ">
+                  <div className="flex justify-between ">
+                    <p>Total price</p>
+                    <p className="text-base font-semibold">₹1190</p>
+                  </div>
+                  <div className="flex  items-center gap-2 ">
+                    <p className="text-xs text-[#898590]">
+                      Including taxes & fees
+                    </p>
+                    <ShieldAlert className="size-3" />
+                  </div>
+                </div>
+                <div className="bg-[#1AB64F] p-3 rounded-md text-center">
+                  <p className="text-white font-semibold text-lg ">
+                    Continue to Book
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-4">
+                <div className=" text-[#EF2E2B]">
+                  <p>9 people booked this hotel in last 6 hours</p>
+                </div>
+                <div className="flex flex-col gap-2 text-[#EF2E2B]">
+                  <div className="flex gap-1 items-center  ">
+                    <p>Cancellation Policy</p>
+                    <ShieldAlert className="size-3" />
+                  </div>
+                  <div className="">
+                    <p>Follow safety measures advised at the hotel</p>
+                  </div>
+                  <div className="flex  gap-2 items-center">
+                    <p className="text-[#9E9E9E] text-sm">
+                      By proceeding, you agree to our
+                    </p>
+                    <p className="">Guest Policies.</p>
                   </div>
                 </div>
               </div>
